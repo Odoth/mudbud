@@ -11,7 +11,8 @@
         "noImplicitReturns": true,
         "types": [
             "../../node_modules/xterm",
-            "../../node_modules/@types/jquery"
+            "../../node_modules/@types/jquery",
+            "../../node_modules/@types/jqueryui"
         ]
     },
     "include": [
