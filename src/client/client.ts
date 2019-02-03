@@ -12,7 +12,9 @@ import { ConnectWin } from "./connectWin";
 
 declare let configClient: any;
 
-let theme: ITheme = {
+const theme: ITheme = {
+    cursor: "rgb(0,0,0)",
+
     background: "rgb(0,0,0)",
     foreground: "rgb(0,187,0)",
 
@@ -35,6 +37,7 @@ let theme: ITheme = {
     brightWhite: "rgb(256,256,256)"
 };
 
+
 export class Client {
     public term: Terminal;
     public ioConn: SocketIOClient.Socket;
@@ -43,6 +46,8 @@ export class Client {
     private partialUtf8: Uint8Array | null = null;
 
     private enableUtf8 = true;
+
+    private fontSize = 13;
 
     private sendCmd(cmd: string) {
         cmd += "\r\n";
@@ -88,16 +93,33 @@ export class Client {
         this.term = new Terminal({
             scrollback: 5000,
             theme: theme,
-            fontFamily: "\"Courier\", monospace",
-            fontSize: 13,
+            fontFamily: 'courier-new, courier, monospace',
+            fontSize: this.fontSize,
             enableBold: false,
-            disableStdin: true
-            // rows: 120
+            disableStdin: true,
+            rows: this.getTermRows(),
+            cols: this.getTermCols(),
         });
+        this.term.attachCustomKeyEventHandler((ev) => { return false; });
 
-        this.term.registerLinkMatcher(/\x1f<taco>/, (event) => {
+        (() => {
+            let resizeTimer: any = null;
+            window.addEventListener("resize", (ev) => {
+                console.log("resize event");
+                if (resizeTimer !== null) {
+                    clearTimeout(resizeTimer);
+                }
+                resizeTimer = setTimeout(() => {
+                    resizeTimer = null;
+                    this.term.resize(
+                        this.getTermCols(),
+                        this.getTermRows()
+                    );
+                });
+            });
+        })();
 
-        });
+
         let div = document.getElementById("mainWin");
         if (div !== null) {
             this.term.open(div);
@@ -157,7 +179,42 @@ export class Client {
         }
     }
 
-    // private resizeTerm() {
-    //     // this.term.getOption()
-    // }
+    private getTermRows(): number {
+        let menu = document.getElementsByClassName("menu-container")[0];
+        let cmdInput = document.getElementById("cmdInput");
+
+        if (cmdInput === null) {
+            throw "Couldn't get cmdInput";
+        }
+
+        let vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+        let termH = vh - menu.scrollHeight - cmdInput.scrollHeight;
+
+        console.log(termH)
+        return Math.floor(termH / (this.fontSize * window.devicePixelRatio));
+    }
+
+    private getTermCols(): number {
+        let canvas = document.createElement("canvas");
+        let ctx = canvas.getContext("2d");
+        if (ctx === null) {
+            throw "";
+        }
+
+        ctx.font = this.fontSize + "px Courier";
+        let w = ctx.measureText("A");
+        console.log(w);
+
+        return Math.floor(window.innerWidth / w.width)
+    }
+
+    setFontSize(px: number) {
+        this.fontSize = px;
+        this.term.setOption("fontSize", px);
+        this.term.resize(
+            this.getTermCols(),
+            this.getTermRows()
+        );
+    }
 }
