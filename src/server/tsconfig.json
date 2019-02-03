@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "outDir": "../../build/server",
+        "removeComments": true,
+        "strict": true,
+        "noUnusedLocals": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true
+    },
+    "include": [
+      "./**/*"
+    ]
+  }
+  

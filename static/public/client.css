@@ -1,0 +1,13 @@
+#mudbud {
+    /* height: 92vh; */
+    width: 100vw;
+    max-width: 100%;
+}
+
+#cmdInput {
+    width: 100%;
+}
+
+#mainWin {
+    height: 100%;
+}

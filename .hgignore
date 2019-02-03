@@ -1,0 +1,17 @@
+syntax: regexp
+
+^configClient\.js$
+^configServer.js$
+^node_modules/
+^build/
+^static/public/jquery\.min\.js$
+^static/public/jquery-ui\.min\.js$
+^static/public/jquery-ui\.min\.css$
+^static/public/bootstrap\.min\.js
+^static/public/bootstrap\.min\.css$
+^static/public/socket\.io\.slim\.js$
+^static/public/xterm\.js$
+^static/public/xterm\.css$
+^static/public/mudbud\.js$
+^static/public/configClient\.js$
+^static/public/images

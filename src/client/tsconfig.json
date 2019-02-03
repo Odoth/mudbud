@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "es2015",
+        "outDir": "../../build/client",
+        "sourceMap": true,
+        "removeComments": true,
+        "strict": true,
+        "noUnusedLocals": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "types": [
+            "../../node_modules/xterm",
+            "../../node_modules/@types/jquery"
+        ]
+    },
+    "include": [
+      "./**/*"
+    ]
+  }
+  

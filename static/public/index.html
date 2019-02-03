@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- <link rel="icon" type="image/ico" href="favicon.ico"> -->
+
+  <script src="jquery.min.js"></script>
+
+  <link rel="stylesheet" href="jquery-ui.min.css">
+  <script src="jquery-ui.min.js"></script>
+
+  <link rel="stylesheet" href="bootstrap.min.css"></script>
+  <script src="bootstrap.min.js"></script>
+
+  <script src="socket.io.slim.js"></script>
+  <link rel="stylesheet" href="xterm.css">
+  <script src="xterm.js"></script>
+
+  <link rel="stylesheet" href="client.css">
+
+  <script src="polyfill.js"></script>
+  <script src="configClient.js"></script>
+  
+  <script src="mudbud.js"></script>
+</head>
+<body>
+<div id="mudbud">
+    <!-- Menu toolbar -->
+    <div class="menu-container">
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default btn-menu-connect">Connect</button>
+            
+            <!-- <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Settings
+            </button>
+            <ul class="dropdown-menu">
+                <li class='li-menu-wrap'  ><div><input type="checkbox" checked><a class="a-menu-wrap"   href="#">Wrap Text</a></div></li>
+                <li class='li-menu-colors'><div><input type="checkbox" checked><a class="a-menu-colors" href="#">Colors</a></div></li>
+                <li class='li-menu-echo'  ><div><input type="checkbox"        ><a class="a-menu-echo"   href="#">Echo Commands</a></div></li>
+                <li class='li-menu-clear' ><div><input type="checkbox" checked><a class="a-menu-clear"  href="#">Clear Commands</a></div></li>
+            </ul>
+            </div> -->
+            <!-- 
+            <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Screen
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="a-menu-editor" href="#">Open Editor</a></li>
+                <li><a class="a-menu-black-screen" href="#">Black Screen</a></li>
+                <li><a class="a-menu-white-screen" href="#">White Screen</a></li>
+                <li><a class="a-menu-clear-screen" href="#">Clear Screen</a></li>
+            </ul>
+            </div>
+            <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Fonts
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class='a-menu-tiny-font'       href="#">Tiny Font</a></li>
+                <li><a class='a-menu-tiny-bold-font'  href="#">Tiny Font - Bold</a></li>
+                <li><a class='a-menu-small-font'      href="#">Small Font</a></li>
+                <li><a class='a-menu-small-bold-font' href="#">Small Font - Bold</a></li>
+                <li><a class='a-menu-med-font'        href="#">Medium Font</a></li>
+                <li><a class='a-menu-med-bold-font'   href="#">Medium Font - Bold</a></li>
+                <li><a class='a-menu-large-font'      href="#">Large Font</a></li>
+                <li><a class='a-menu-large-bold-font' href="#">Large Font - Bold</a></li>
+            </ul>
+            </div> -->
+        </div>
+    </div>
+    <div id="mainWin">
+    </div>
+    <input id="cmdInput">
+</div>
+</body>
+</html>

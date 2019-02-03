@@ -1,0 +1,35 @@
+{
+  "name": "mudbud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-client": "tsc -p src/client/tsconfig.json && rollup -c rollup.config.client.js",
+    "build-server": "tsc -p src/server/tsconfig.json",
+    "postinstall": "node tools/postinstall.js",
+    "prestart": "node tools/prestart.js",
+    "start": "node build/server/server/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.16.1",
+    "@types/jquery": "^2.0.39",
+    "@types/jqueryui": "^1.11.37",
+    "@types/node": "^6.0.108",
+    "@types/socket.io": "^2.1.2",
+    "@types/socket.io-client": "^1.4.32",
+    "bootstrap": "^3.3.7",
+    "express": "^4.16.4",
+    "fs-extra": "^7.0.1",
+    "jquery": "^1.11.1",
+    "jquery-ui-dist": "^1.12.1",
+    "rollup": "^1.1.2",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
+    "typescript": "^3.3.1",
+    "xterm": "^3.11.0"
+  }
+}
