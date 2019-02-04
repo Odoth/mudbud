@@ -134,6 +134,14 @@ export class Client {
             (configClient.socketIoPort || location.port) +
             "/telnet");
 
+        this.ioConn.on("connect", () => {
+            this.term.writeln("\x1b[1;36m[[Websocket connected]]\x1b[0m");
+        });
+
+        this.ioConn.on("disconnect", () => {
+            this.term.writeln("\x1b[1;36m[[Websocket disconnected]]\x1b[0m");
+        });
+
         let telnet = new TelnetClient((data) => {
             this.ioEvt.clReqTelnetWrite.fire(data);
         });
@@ -161,6 +169,16 @@ export class Client {
         });
 
         this.ioEvt = new IoEvent(this.ioConn);
+
+        this.ioEvt.srvTelnetClosed.handle(() => {
+            this.term.writeln("\x1b[1;36m[[Telnet disconnected]]\x1b[0m");
+        });
+        this.ioEvt.srvTelnetOpened.handle(() => {
+            this.term.writeln("\x1b[1;36m[[Telnet connected]]\x1b[0m");
+        });
+        this.ioEvt.srvTelnetError.handle((data: string) => {
+            this.term.writeln("\x1b[1;31m[[Telnet error\r\n" + data + "\r\n]]\x1b[0m");
+        });
 
         this.ioEvt.srvTelnetData.handle((data: ArrayBuffer) => {
             telnet.handleData(data);
